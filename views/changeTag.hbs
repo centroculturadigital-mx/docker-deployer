@@ -6,31 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ pageTile }}</title>
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/product.css">
 </head>
 
 <body>
     <header class="main-header">
         <nav class="main-header__nav">
             <ul class="main-header__item-list">
-                <li class="main-header__item"><a href="/">Shop</a></li>
-                <li class="main-header__item"><a class="active" href="/admin/add-product">Add Product</a></li>
+                <li class="main-header__item"><a href="/">Back</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <form class="product-form" action="/admin/add-product" method="POST">
-            <div class="form-control">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title">
+        <h1>{{name}}</h1>
+        <h3>
+            {{status}}, since {{startDate}} 
+        </h3>
+        <div>
+            Imagen: {{registry}}
+            
+        </div>
+        <div>
+            <span>currentTag:{{currentTag}}</span>
+            
+        </div>
+        <div>
+            New tag:<input type="text" name="nextTag" />
+        </div>
+            <div>
+                <button onclick="changeTag('{{name}}', '{{registry}}')">Change Tag</button>
             </div>
-
-            <button class="btn" type="submit">Add Product</button>
-        </form>
     </main>
+    <script>
+    function changeTag(name, registry) {
+        const nextTag = document.querySelector('[name="nextTag"]').value;
+        console.log('nextTag', nextTag)
+        fetch(`/api/changeTag/${name.split('/')[1]}/${registry}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nextTag })
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+    }
+</script>
 </body>
 
 </html>

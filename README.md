@@ -19,9 +19,10 @@ Using (dockerode)[https://github.com/apocas/dockerode] and (dockerode-compose)[h
 - [x] Show all containers
 - [x] Show compose groups and it's services
 - [x] Change the tag for a service image on a docker compose manifest
-- [ ] Authentication
-- [ ] Save image history per service  (reg, tag, pulldate)
+- [ ] Lista de palabras clave en nombre de cotenedores para ignorar en UI y api
+- [ ] Save image history per service  (reg, tag, pulldate, commit desc, commit autho)
 - [ ] Show image history per service on weh web app
+- [ ] Authentication
 - [ ] Select a previous image to rollback a service
 - [ ] Show the log a specific service on the web app
 - [ ] Create a new compose group on the web app

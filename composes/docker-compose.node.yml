@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  node-test:
+    container_name: node-test
+    image: node-test:hola
+    ports:
+      - '4000:3000'
